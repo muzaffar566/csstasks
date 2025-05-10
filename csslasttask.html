@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>CSS Navigation & Overflow Demo</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    /* Horizontal Menu */
+    .horizontal-menu {
+      background-color: #333;
+      overflow: hidden;
+    }
+
+    .horizontal-menu a {
+      float: left;
+      display: block;
+      color: white;
+      text-align: center;
+      padding: 14px 20px;
+      text-decoration: none;
+    }
+
+    .horizontal-menu a:hover {
+      background-color: #575757;
+    }
+
+    /* Vertical Menu */
+    .vertical-menu {
+      width: 200px;
+      background-color: #f1f1f1;
+      padding: 0;
+      margin-top: 10px;
+    }
+
+    .vertical-menu a {
+      display: block;
+      color: black;
+      padding: 10px;
+      text-decoration: none;
+    }
+
+    .vertical-menu a:hover {
+      background-color: #ddd;
+    }
+
+    /* Dropdown Menu */
+    .dropdown {
+      position: relative;
+      display: inline-block;
+    }
+
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      background-color: white;
+      min-width: 150px;
+      box-shadow: 0px 8px 16px rgba(0,0,0,0.2);
+      z-index: 1;
+    }
+
+    .dropdown:hover .dropdown-content {
+      display: block;
+    }
+
+    .dropdown-content a {
+      color: black;
+      padding: 10px;
+      display: block;
+      text-decoration: none;
+    }
+
+    .dropdown-content a:hover {
+      background-color: #eee;
+    }
+
+    /* Responsive Hamburger */
+    .hamburger-menu {
+      display: none;
+      background-color: #333;
+    }
+
+    .hamburger-icon {
+      font-size: 28px;
+      color: white;
+      padding: 15px;
+      cursor: pointer;
+    }
+
+    .hamburger-links {
+      display: none;
+      flex-direction: column;
+      background-color: #333;
+    }
+
+    .hamburger-links a {
+      color: white;
+      padding: 14px;
+      text-decoration: none;
+    }
+
+    .hamburger-links a:hover {
+      background-color: #575757;
+    }
+
+    /* Overflow Container */
+    .overflow-container {
+      width: 600px;
+      height: 200px;
+      border: 1px solid #ccc;
+      overflow: auto;
+      margin: 20px 0;
+      padding: 10px;
+    }
+
+    /* Text Block Overflow */
+    .text-overflow {
+      width: 400px;
+      height: 120px;
+      border: 1px solid #aaa;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      padding: 5px;
+    }
+
+    /* Image Overflow */
+    .image-container {
+      width: 400px;
+      height: 300px;
+      overflow: hidden;
+      border: 2px solid #999;
+    }
+
+    .image-container img {
+      width: 600px;
+      height: auto;
+    }
+
+    /* Scrollable Dropdown */
+    .dropdown-scroll {
+      height: 200px;
+      overflow-y: scroll;
+      border: 1px solid #aaa;
+    }
+
+    /* Inline-block Example */
+    .inline-container {
+      margin-top: 20px;
+    }
+
+    .inline-box {
+      display: inline-block;
+      width: 200px;
+      height: 200px;
+      margin-right: 10px;
+      background-color: #4CAF50;
+      color: white;
+      text-align: center;
+      line-height: 100px;
+    }
+
+    /* Media Query for Responsive Menu */
+    @media screen and (max-width: 600px) {
+      .horizontal-menu { display: none; }
+      .hamburger-menu { display: block; }
+    }
+
+  </style>
+  <script>
+    function toggleMenu() {
+      const links = document.getElementById("hamburger-links");
+      links.style.display = links.style.display === "flex" ? "none" : "flex";
+    }
+  </script>
+</head>
+<body>
+
+  <!-- Horizontal Menu -->
+  <div class="horizontal-menu">
+    <a href="#">Home</a>
+    <a href="#">About</a>
+    <div class="dropdown">
+      <a href="#">Services ▼</a>
+      <div class="dropdown-content">
+        <a href="#">Web Design</a>
+        <a href="#">Development</a>
+        <a href="#">SEO</a>
+      </div>
+    </div>
+    <a href="#">Contact</a>
+  </div>
+
+  <!-- Hamburger Menu (Responsive) -->
+  <div class="hamburger-menu">
+    <div class="hamburger-icon" onclick="toggleMenu()">☰ Menu</div>
+    <div class="hamburger-links" id="hamburger-links">
+      <a href="#">Home</a>
+      <a href="#">About</a>
+      <a href="#">Services</a>
+      <a href="#">Contact</a>
+    </div>
+  </div>
+
+  <!-- Vertical Menu -->
+  <div class="vertical-menu">
+    <a href="#">Dashboard</a>
+    <a href="#">Profile</a>
+    <a href="#">Settings</a>
+  </div>
+
+  <!-- Overflow Container -->
+  <div class="overflow-container">
+    <p>This is a container with overflow. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse lectus tortor, dignissim sit amet.</p>
+  </div>
+
+  <!-- Text Overflow -->
+  <div class="text-overflow">
+    This is a long sentence that will not fully show due to overflow hidden and ellipsis...
+  </div>
+
+  <!-- Image Overflow -->
+  <div class="image-container">
+    <img src="images.jpeg" alt="Example Image" />
+  </div>
+
+  <!-- Dropdown Scroll -->
+  <div class="dropdown-scroll">
+    <p>Option 1</p>
+    <p>Option 2</p>
+    <p>Option 3</p>
+    <p>Option 4</p>
+    <p>Option 5</p>
+    <p>Option 6</p>
+    <p>Option 7</p>
+  </div>
+
+  <!-- Inline-block Elements -->
+  <div class="inline-container">
+    <div class="inline-box">Box 1</div>
+    <div class="inline-box">Box 2</div>
+    <div class="inline-box">Box 3</div>
+  </div>
+
+</body>
+</html>
